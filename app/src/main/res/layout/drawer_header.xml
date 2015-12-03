@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawer_header_height"
+    android:background="@mipmap/drawer_patt"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/drawer_paddingTop"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:paddingBottom="@dimen/drawer_paddingBottom"
+    android:paddingLeft="@dimen/drawer_padding_right_left"
+    android:paddingRight="@dimen/drawer_padding_right_left">
+
+    <ImageView
+        android:layout_width="@dimen/img_height_width"
+        android:layout_height="@dimen/img_height_width"
+        android:src="@drawable/icon"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ll_height"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical">
+
+         <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="@string/drawer_name"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="@string/drawer_e_mail"
+            android:textSize="@dimen/text_size"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
