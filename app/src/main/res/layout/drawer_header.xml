@@ -27,7 +27,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorText"
             android:text="@string/drawer_name"
             android:textSize="@dimen/text_size"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorText"
             android:text="@string/drawer_e_mail"
             android:textSize="@dimen/text_size"
             android:textStyle="normal"/>
