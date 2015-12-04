@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MoneyTracker</string>
     <string name="action_settings">Settings</string>
+
+    <string name="nav_drawer_expenses">Траты</string>
+    <string name="nav_drawer_categories">Категории</string>
+    <string name="nav_drawer_statistic">Статистика</string>
+    <string name="nav_drawer_setting">Настройки</string>
+    <string name="drawer_name">Baklanov Vyacheslav</string>
+    <string name="drawer_e_mail">aspknopixx@gmail.com</string>
 </resources>
