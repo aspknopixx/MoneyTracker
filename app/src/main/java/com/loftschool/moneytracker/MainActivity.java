@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-
+/*Сделать так, что бы при навигации по бэкстэку перемещался указатель активного экрана.*/
     public void onBackPressed() {
         super.onBackPressed();
         android.support.v4.app.Fragment findingFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
