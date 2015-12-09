@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
         if(drawerLayout.isDrawerOpen(navigationView)){
             drawerLayout.closeDrawers();
             return;
-        }
+        } else {
         super.onBackPressed();
+        }
         Fragment findingFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
         if (findingFragment != null ){
              itemId = R.id.drawer_expenses;
