@@ -11,6 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import  static android.graphics.Color.rgb;
 
+//раскрашиваем строчки с помощью backgroundColor
+
 import java.util.List;
 import java.util.Random;
 
