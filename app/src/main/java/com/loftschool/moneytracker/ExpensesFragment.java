@@ -31,11 +31,11 @@ public class ExpensesFragment extends Fragment{
 
     private List<Expense> getDataList(){
         List<Expense> data = new ArrayList<>();
-        long ListDate = Calendar.getInstance().getTimeInMillis();
-        data.add(new Expense("Телефон",1000,new Date(ListDate)));
-        data.add(new Expense("Щетка",2000,new Date(ListDate)));
-        data.add(new Expense("Продукты",3000,new Date(ListDate)));
-        data.add(new Expense("Интернет",4000,new Date(ListDate)));
+        long listDate = Calendar.getInstance().getTimeInMillis();
+        data.add(new Expense("Телефон",1000,new Date(listDate)));
+        data.add(new Expense("Щетка",2000,new Date(listDate)));
+        data.add(new Expense("Продукты",3000,new Date(listDate)));
+        data.add(new Expense("Интернет",4000,new Date(listDate)));
         return data;
     }
 }

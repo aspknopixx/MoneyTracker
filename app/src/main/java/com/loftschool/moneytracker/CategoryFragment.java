@@ -31,10 +31,10 @@ public class CategoryFragment extends Fragment {
 
     private List<Expense> getDataList(){
         List<Expense> data = new ArrayList<>();
-         long ListDate = Calendar.getInstance().getTimeInMillis();
-        data.add(new Expense("Продукты",1000,new Date(ListDate)));
-        data.add(new Expense("Услуги",2000,new Date(ListDate)));
-        data.add(new Expense("Автомобиль",3000,new Date(ListDate)));
+         long listDate = Calendar.getInstance().getTimeInMillis();
+        data.add(new Expense("Продукты",1000,new Date(listDate)));
+        data.add(new Expense("Услуги",2000,new Date(listDate)));
+        data.add(new Expense("Автомобиль",3000,new Date(listDate)));
         return data;
     }
 }

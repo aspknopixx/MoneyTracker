@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,22 +83,27 @@ public class MainActivity extends AppCompatActivity {
     }
 /*Сделать так, что бы при навигации по бэкстэку перемещался указатель активного экрана.*/
     public void onBackPressed() {
+         int itemId;
+//Проверяем открыт ли наш navigationView, если да то закрываем его.
+        if(drawerLayout.isDrawerOpen(navigationView)){
+            drawerLayout.closeDrawers();
+            return;
+        }
         super.onBackPressed();
-        android.support.v4.app.Fragment findingFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
+        Fragment findingFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
         if (findingFragment != null ){
-            if (findingFragment instanceof ExpensesFragment){
+             itemId = R.id.drawer_expenses;
+              if (findingFragment instanceof ExpensesFragment){
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                navigationView.getMenu().findItem( R.id.drawer_expenses).setChecked(true);
+                itemId = R.id.drawer_expenses;
+            } if(findingFragment instanceof CategoryFragment) {
+                itemId = R.id.drawer_categories;
+            } if(findingFragment instanceof StatisticsFragment) {
+                itemId = R.id.drawer_statistics;
+            } if(findingFragment instanceof SettingsFragment) {
+                itemId = R.id.action_settings;
             }
-            if(findingFragment instanceof CategoryFragment) {
-                navigationView.getMenu().findItem(R.id.drawer_categories).setChecked(true);
-            }
-            if(findingFragment instanceof StatisticsFragment) {
-                navigationView.getMenu().findItem(R.id.drawer_statistics).setChecked(true);
-            }
-            if(findingFragment instanceof SettingsFragment) {
-                navigationView.getMenu().findItem( R.id.drawer_settings).setChecked(true);
-            }
+            navigationView.getMenu().findItem(itemId).setChecked(true);
         }}
 
     private void setupDrawer(){
