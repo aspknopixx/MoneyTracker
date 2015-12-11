@@ -18,7 +18,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardVi
 
     @Override
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
+        View convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         return new CardViewHolder(convertView);
     }
 
