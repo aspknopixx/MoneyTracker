@@ -33,9 +33,9 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.CardView
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         Expense expense = expenses.get(position);
-        holder.name_text.setText(expense.getTitle());
-        holder.sum_text.setText(expense.getSum());
-        holder.date_name.setText(expense.getDate());
+        holder.nameText.setText(expense.getTitle());
+        holder.sumText.setText(expense.getSum());
+        holder.dateName.setText(expense.getDate());
     }
 
     @Override
@@ -45,15 +45,15 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.CardView
 
 
     public class CardViewHolder extends RecyclerView.ViewHolder{
-    protected  TextView name_text;
-    protected  TextView sum_text;
-    protected  TextView date_name;
+    protected  TextView nameText;
+    protected  TextView sumText;
+    protected  TextView dateName;
 
     public CardViewHolder(View convertView){
         super(convertView);
-        name_text = (TextView) convertView.findViewById(R.id.name_text);
-        sum_text = (TextView) convertView.findViewById(R.id.sum_text);
-        date_name = (TextView) convertView.findViewById(R.id.date_text);
+        nameText = (TextView) convertView.findViewById(R.id.name_text);
+        sumText = (TextView) convertView.findViewById(R.id.sum_text);
+        dateName = (TextView) convertView.findViewById(R.id.date_text);
     }
 
     }

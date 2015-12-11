@@ -28,26 +28,25 @@ public class CategoryFragment extends Fragment {
         final View mainView = inflater.inflate(R.layout.category_fragment, container, false);
         RecyclerView expenseRecyclerView = (RecyclerView) mainView.findViewById(R.id.context_recyclerview);
         List<Expense> adapterData = getDataList();
-        ExpenseAdapter expenseAdapter = new ExpenseAdapter(adapterData);
-        expenseRecyclerView.setAdapter(expenseAdapter);
+      CategoryAdapter categoryAdapter = new CategoryAdapter(adapterData);
+        expenseRecyclerView.setAdapter(categoryAdapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        expenseRecyclerView.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linerLayoutManager = new LinearLayoutManager(getActivity());
+        linerLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        expenseRecyclerView.setLayoutManager(linerLayoutManager);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) mainView.findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Snackbar.make(mainView, "Nice, it's work !", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(mainView, "Nice, it's work !",Snackbar.LENGTH_SHORT).show();
             }
         });
-
-
 
         getActivity().setTitle("Категории");
         return mainView;
     }
+
 
     private List<Expense> getDataList(){
         List<Expense> data = new ArrayList<>();
