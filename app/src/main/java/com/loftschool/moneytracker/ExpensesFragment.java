@@ -31,15 +31,15 @@ public class ExpensesFragment extends Fragment{
         ExpenseAdapter expenseAdapter = new ExpenseAdapter(adapterData);
         expenseRecyclerView.setAdapter(expenseAdapter);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        expenseRecyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linerLayoutManager = new LinearLayoutManager(getActivity());
+        linerLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        expenseRecyclerView.setLayoutManager(linerLayoutManager);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) mainView.findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Snackbar.make(mainView, "Nice",Snackbar.LENGTH_SHORT);
+                Snackbar.make(mainView, "Nice, it's work !",Snackbar.LENGTH_SHORT).show();
             }
         });
 
