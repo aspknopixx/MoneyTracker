@@ -1,7 +1,12 @@
 package com.loftschool.moneytracker;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +25,24 @@ public class ExpensesFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View mainView = inflater.inflate(R.layout.expenses_fragment, container, false);
-        ListView expenseListView = (ListView) mainView.findViewById(R.id.list_view);
+        final View mainView = inflater.inflate(R.layout.expenses_fragment, container, false);
+        RecyclerView expenseRecyclerView = (RecyclerView) mainView.findViewById(R.id.context_recyclerview);
         List<Expense> adapterData = getDataList();
-        ExpenseAdapter expenseAdapter = new ExpenseAdapter(getActivity(), adapterData);
-        expenseListView.setAdapter(expenseAdapter);
+        ExpenseAdapter expenseAdapter = new ExpenseAdapter(adapterData);
+        expenseRecyclerView.setAdapter(expenseAdapter);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        expenseRecyclerView.setLayoutManager(gridLayoutManager);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) mainView.findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(mainView, "Nice",Snackbar.LENGTH_SHORT);
+            }
+        });
+
         getActivity().setTitle("Траты");
         return mainView;
     }

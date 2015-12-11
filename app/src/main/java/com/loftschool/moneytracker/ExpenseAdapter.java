@@ -3,6 +3,7 @@ package com.loftschool.moneytracker;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,36 +17,45 @@ import  static android.graphics.Color.rgb;
 import java.util.List;
 import java.util.Random;
 
-public class ExpenseAdapter extends ArrayAdapter<Expense> {
+public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.CardViewHolder> {
     List<Expense> expenses;
-    static int backGroundColor;
-    public ExpenseAdapter(Context context,  List<Expense> expenses) {
-        super(context, 0, expenses);
+
+    public ExpenseAdapter(List<Expense> expenses){
         this.expenses = expenses;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Expense expense = getItem(position);
-        Random random = new Random();
+    public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      View  convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        return new CardViewHolder(convertView);
+    }
 
-        if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
-        }
+    @Override
+    public void onBindViewHolder(CardViewHolder holder, int position) {
+        Expense expense = expenses.get(position);
+        holder.name_text.setText(expense.getTitle());
+        holder.sum_text.setText(expense.getSum());
+        holder.date_name.setText(expense.getDate());
+    }
 
-        RelativeLayout relativeLayout = (RelativeLayout) convertView.findViewById(R.id.lItem);
-        backGroundColor = Color.argb(50, random.nextInt(256), random.nextInt(250),random.nextInt(256));
-        relativeLayout.setBackgroundColor(backGroundColor);
+    @Override
+    public int getItemCount() {
+        return expenses.size();
+    }
 
-        TextView name = (TextView) convertView.findViewById(R.id.name_text);
-        TextView sum = (TextView) convertView.findViewById(R.id.sum_text);
-        TextView date = (TextView) convertView.findViewById(R.id.date_text);
 
-        name.setText(expense.getTitle());
-        sum.setText(expense.getSum());
-        date.setText(expense.getDate());
+    public class CardViewHolder extends RecyclerView.ViewHolder{
+    protected  TextView name_text;
+    protected  TextView sum_text;
+    protected  TextView date_name;
 
-        return convertView;
+    public CardViewHolder(View convertView){
+        super(convertView);
+        name_text = (TextView) convertView.findViewById(R.id.name_text);
+        sum_text = (TextView) convertView.findViewById(R.id.sum_text);
+        date_name = (TextView) convertView.findViewById(R.id.date_text);
+    }
+
     }
 }
 
