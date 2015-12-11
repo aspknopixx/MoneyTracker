@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
          int itemId;
 //Проверяем открыт ли наш navigationView, если да то закрываем его.
         if(drawerLayout.isDrawerOpen(navigationView)){
-            drawerLayout.closeDrawers();
+            drawerLayout.closeDrawer(navigationView);
             return;
         } else {
         super.onBackPressed();

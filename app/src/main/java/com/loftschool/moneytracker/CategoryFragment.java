@@ -2,8 +2,13 @@ package com.loftschool.moneytracker;
 
 
 import android.os.Bundle;
-        import android.support.v4.app.Fragment;
-        import android.view.LayoutInflater;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.ListView;
@@ -20,14 +25,28 @@ public class CategoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View mainView = inflater.inflate(R.layout.category_fragment, container, false);
-        ListView expenseListView = (ListView) mainView.findViewById(R.id.list_view);
+        final View mainView = inflater.inflate(R.layout.category_fragment, container, false);
+        RecyclerView expenseRecyclerView = (RecyclerView) mainView.findViewById(R.id.context_recyclerview);
         List<Expense> adapterData = getDataList();
-        ExpenseAdapter expenseAdapter = new ExpenseAdapter(getActivity(), adapterData);
-        expenseListView.setAdapter(expenseAdapter);
+      CategoryAdapter categoryAdapter = new CategoryAdapter(adapterData);
+        expenseRecyclerView.setAdapter(categoryAdapter);
+
+        LinearLayoutManager linerLayoutManager = new LinearLayoutManager(getActivity());
+        linerLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        expenseRecyclerView.setLayoutManager(linerLayoutManager);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) mainView.findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(mainView, "Nice, it's work !",Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
         getActivity().setTitle("Категории");
         return mainView;
     }
+
 
     private List<Expense> getDataList(){
         List<Expense> data = new ArrayList<>();
