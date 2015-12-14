@@ -41,7 +41,7 @@ public class ExpensesFragment extends Fragment{
             @Override
             public void onClick(View v) {
 //                Snackbar.make(mainView, "Nice, it's work !",Snackbar.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), AddExpenseActivity.class);
+                Intent intent = new Intent(getActivity(), AddExpenseActivity_.class);
                 intent.putExtra("key","value");
                 getActivity().startActivity(intent);
             }
