@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Container.DarkBackground">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="4"
+        android:background="@color/white"
+        android:padding="@dimen/activity_vertical_margin"
+        >
+
+        <TextView
+            android:gravity="fill"
+            android:text="Сумма"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:gravity="fill"
+            android:hint="1000"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:gravity="fill"
+            android:text="Примечание"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:gravity="fill"
+            android:hint="MacDonalds"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:gravity="fill"
+            android:text="Категория"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:gravity="fill"
+            android:hint="Foot"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:gravity="fill"
+            android:text="Дата"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <EditText
+            android:gravity="fill"
+            android:hint="23/01/2015"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+    </GridLayout>
+
+</LinearLayout>
