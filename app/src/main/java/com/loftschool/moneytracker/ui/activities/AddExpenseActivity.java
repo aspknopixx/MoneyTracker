@@ -1,9 +1,11 @@
-package com.loftschool.moneytracker;
+package com.loftschool.moneytracker.ui.activities;
 
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+
+import com.loftschool.moneytracker.R;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;

@@ -1,26 +1,23 @@
-package com.loftschool.moneytracker;
+package com.loftschool.moneytracker.adapters;
 
 
-import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import  static android.graphics.Color.rgb;
+
+import com.loftschool.moneytracker.R;
+import com.loftschool.moneytracker.database.Expenses;
 
 //раскрашиваем строчки с помощью backgroundColor
 
 import java.util.List;
-import java.util.Random;
 
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.CardViewHolder> {
-    List<Expense> expenses;
+    List<Expenses> expenses;
 
-    public ExpenseAdapter(List<Expense> expenses){
+    public ExpenseAdapter(List<Expenses> expenses){
         this.expenses = expenses;
     }
 
@@ -32,10 +29,10 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.CardView
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
-        Expense expense = expenses.get(position);
-        holder.nameText.setText(expense.getTitle());
-        holder.sumText.setText(expense.getSum());
-        holder.dateName.setText(expense.getDate());
+        Expenses expense = expenses.get(position);
+        holder.nameText.setText(expense.name);
+        holder.sumText.setText(expense.price);
+        holder.dateName.setText(expense.date);
     }
 
     @Override

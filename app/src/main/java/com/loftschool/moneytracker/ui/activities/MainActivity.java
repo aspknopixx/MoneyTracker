@@ -1,4 +1,4 @@
-package com.loftschool.moneytracker;
+package com.loftschool.moneytracker.ui.activities;
 
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -17,6 +17,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
+import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
+import com.loftschool.moneytracker.R;
+import com.loftschool.moneytracker.ui.fragments.SettingsFragment_;
+import com.loftschool.moneytracker.ui.fragments.StatisticsFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
