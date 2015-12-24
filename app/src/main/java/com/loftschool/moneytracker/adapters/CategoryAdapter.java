@@ -7,16 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.loftschool.moneytracker.R;
+import com.loftschool.moneytracker.database.Categories;
 import com.loftschool.moneytracker.database.Expenses;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardViewHolder>{
 
-    List<Expenses> expenses;
+    List<Categories> categories;
 
-    public CategoryAdapter(List<Expenses> expenses){
-        this.expenses = expenses;
+    public CategoryAdapter(List<Categories> categories ){
+        this.categories = categories;
     }
 
     @Override
@@ -27,28 +28,27 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardVi
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
-        Expenses expense = expenses.get(position);
-        holder.nameText.setText(expense.name);
-        holder.sumText.setText(expense.price);
-        holder.dateName.setText(expense.date);
+        Categories category = categories.get(position);
+        holder.nameText.setText(category.name);
+//        holder.sumText.setText(category.price);
+//        holder.dateName.setText(category.date);
     }
 
     @Override
     public int getItemCount() {
-        return expenses.size();
+        return categories.size();
     }
 
 
     public class CardViewHolder extends RecyclerView.ViewHolder{
         protected TextView nameText;
-        protected  TextView sumText;
-        protected  TextView dateName;
+//        protected  TextView sumText;
+//        protected  TextView dateName;
 
         public CardViewHolder(View convertView){
             super(convertView);
             nameText = (TextView) convertView.findViewById(R.id.name_text);
-            sumText = (TextView) convertView.findViewById(R.id.sum_text);
-            dateName = (TextView) convertView.findViewById(R.id.date_text);
+//            1
         }
 
     }

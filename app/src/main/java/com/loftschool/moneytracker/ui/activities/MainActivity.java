@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.loftschool.moneytracker.database.Categories;
 import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
 import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
 import com.loftschool.moneytracker.R;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
         setupDrawer();
+        CategoryDB();
 
         if(savedInstanceState == null)
         {
@@ -85,15 +87,20 @@ public class MainActivity extends AppCompatActivity {
         Menu menuItems = navigationView.getMenu();
         Fragment findingFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
 
-        if(findingFragment != null && findingFragment instanceof ExpensesFragment_)
-        {
+        if (findingFragment != null && findingFragment instanceof ExpensesFragment_) {
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            menuItems.findItem(R.id.drawer_expenses).setCheckable(true);
-
+            navigationView.setCheckedItem(R.id.drawer_expenses);
+        } else if (findingFragment instanceof CategoryFragment_) {
+            navigationView.setCheckedItem(R.id.drawer_categories);
+        } else if (findingFragment instanceof StatisticsFragment_) {
+            navigationView.setCheckedItem(R.id.drawer_statistics);
+        } else if (findingFragment instanceof SettingsFragment_) {
+            navigationView.setCheckedItem(R.id.drawer_settings);
         }
-        if(drawerLayout.isEnabled())
-        {
-            drawerLayout.closeDrawer(navigationView);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -126,6 +133,24 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+
+    // создем категории
+
+    private void CategoryDB(){
+        Categories categoryClothes = new Categories();
+        categoryClothes.save();
+        Categories categoryFood = new Categories();
+        categoryFood.save();
+        Categories categoryHouse = new Categories();
+        categoryHouse.save();
+        Categories categoryCar = new Categories();
+        categoryCar.save();
+        Categories categoryHobby = new Categories();
+        categoryHobby.save();
+        Categories categoryFun = new Categories();
+        categoryFun.save();
     }
 }
 
