@@ -139,17 +139,17 @@ public class MainActivity extends AppCompatActivity {
     // создем категории
 
     private void CategoryDB(){
-        Categories categoryClothes = new Categories();
+        Categories categoryClothes = new Categories("Clothes");
         categoryClothes.save();
-        Categories categoryFood = new Categories();
+        Categories categoryFood = new Categories("Food");
         categoryFood.save();
-        Categories categoryHouse = new Categories();
+        Categories categoryHouse = new Categories("House");
         categoryHouse.save();
-        Categories categoryCar = new Categories();
+        Categories categoryCar = new Categories("Car");
         categoryCar.save();
-        Categories categoryHobby = new Categories();
+        Categories categoryHobby = new Categories("Hobby");
         categoryHobby.save();
-        Categories categoryFun = new Categories();
+        Categories categoryFun = new Categories("Fun");
         categoryFun.save();
     }
 }

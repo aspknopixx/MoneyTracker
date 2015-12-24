@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="integer" name="max_length_date">10</item>
+    <item type="integer" name="max_length_text">20</item>
+    <item type="integer" name="max_length_sum">8</item>
+</resources>

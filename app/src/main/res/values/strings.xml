@@ -14,4 +14,5 @@
     <string name="fragment_text_expenses">Траты</string>
     <string name="item_text_stat">Здесь будет статистика</string>
     <string name="item_text_setting">Здесь будут настройки</string>
+    <string name="add_button_expense">Добавить</string>
 </resources>

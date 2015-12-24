@@ -50,10 +50,10 @@ public class ExpensesFragment extends Fragment{
 //        ExpenseAdapter expenseAdapter = new ExpenseAdapter(adapterData);
 //        expenseRecyclerView.setAdapter(expenseAdapter);
 
-        Categories categoryFun = new Categories("Fun");
-        categoryFun.save();
-        Expenses expenses = new Expenses("321","cinema","15.12.15",categoryFun);
-        expenses.save();
+//        Categories categoryFun = new Categories("Fun");
+//        categoryFun.save();
+//        Expenses expenses = new Expenses("321","cinema","15.12.15",categoryFun);
+//        expenses.save();
 
         LinearLayoutManager linerLayoutManager = new LinearLayoutManager(getActivity());
         linerLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
