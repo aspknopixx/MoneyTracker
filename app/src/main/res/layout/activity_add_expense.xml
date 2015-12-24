@@ -46,13 +46,9 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
-        <EditText
-            android:gravity="fill"
-            android:hint="Foot"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spinner"
             />
-
         <TextView
             android:gravity="fill"
             android:text="Дата"
