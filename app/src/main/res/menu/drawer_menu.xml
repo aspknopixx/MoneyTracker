@@ -5,7 +5,8 @@
         <item
             android:id="@+id/drawer_expenses"
             android:title="@string/nav_drawer_expenses"
-            android:checked="true"/>
+            android:checked="true" />
+
         <item
             android:id="@+id/drawer_categories"
             android:title="@string/nav_drawer_categories"/>

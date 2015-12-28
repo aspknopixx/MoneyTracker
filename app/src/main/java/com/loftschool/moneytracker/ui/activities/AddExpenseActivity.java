@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -22,6 +23,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -63,15 +67,23 @@ public class AddExpenseActivity extends AppCompatActivity {
                 });
 
             }
+        TextView date = (TextView) findViewById(R.id.tv_date);
+        final Calendar c = Calendar.getInstance();
+        int yy = c.get(Calendar.YEAR);
+        int mm = c.get(Calendar.MONTH);
+        int dd = c.get(Calendar.DAY_OF_MONTH);
+        date.setText(new StringBuilder().append(dd).append(" ").append("-").append(mm + 1).append("-")
+                .append(yy));
     }
 
-    @Click(R.id.add_btn_expense)
+    @Click(R.id.fab_expense)
     public void clickBtn(){
         EditText sum = (EditText)findViewById(R.id.sum_text);
         EditText fill = (EditText)findViewById(R.id.fill_text);
-        EditText date = (EditText)findViewById(R.id.date_text);
+//      EditText date = (EditText)findViewById(R.id.date_text);
+        TextView date = (TextView) findViewById(R.id.tv_date);
 
-        if(sum.getText().toString().equals("") ||  date.getText().toString().equals("")){
+        if(sum.getText().toString().equals("")){
             Toast.makeText(this, "Не заполнено одно из обязательных полей", Toast.LENGTH_LONG).show();
         } else {
             Categories category = (Categories) spinner.getSelectedItem();

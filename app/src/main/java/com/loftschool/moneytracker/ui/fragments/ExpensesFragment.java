@@ -60,17 +60,17 @@ public class ExpensesFragment extends Fragment{
         expenseRecyclerView.setLayoutManager(linerLayoutManager);
         if (floatingActionButton.isPressed()){
             ButtonWasClicked();
-            getActivity().setTitle(getString(R.string.nav_drawer_expenses));
         }
+        getActivity().setTitle(getString(R.string.nav_drawer_expenses));
         loadData();
     }
 
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        loadData();
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+    }
 
     private void loadData(){
         getLoaderManager().restartLoader(0, null, new LoaderManager.LoaderCallbacks<List<Expenses>>() {
