@@ -83,7 +83,7 @@ public class AddExpenseActivity extends AppCompatActivity {
 //      EditText date = (EditText)findViewById(R.id.date_text);
         TextView date = (TextView) findViewById(R.id.tv_date);
 
-        if(sum.getText().toString().equals("")){
+        if(sum.getText().toString().equals("") || fill.getText().toString().equals("")){
             Toast.makeText(this, "Не заполнено одно из обязательных полей", Toast.LENGTH_LONG).show();
         } else {
             Categories category = (Categories) spinner.getSelectedItem();
