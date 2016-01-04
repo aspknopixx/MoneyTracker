@@ -3,6 +3,7 @@ package com.loftschool.moneytracker.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -16,8 +17,11 @@ import com.loftschool.moneytracker.R;
 import com.loftschool.moneytracker.adapters.SpinAdapter;
 import com.loftschool.moneytracker.database.Categories;
 import com.loftschool.moneytracker.database.Expenses;
+import com.loftschool.moneytracker.rest.RestService;
+import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
@@ -31,6 +35,9 @@ import java.util.List;
 
 @EActivity(R.layout.activity_add_expense)
 public class AddExpenseActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = AddExpenseActivity.class.getSimpleName();
+
     @ViewById
     protected Toolbar toolbar;
 
@@ -45,6 +52,7 @@ public class AddExpenseActivity extends AppCompatActivity {
 
     @AfterViews
     void ready() {
+        RestService();
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             {
@@ -67,6 +75,8 @@ public class AddExpenseActivity extends AppCompatActivity {
                 });
 
             }
+
+
         TextView date = (TextView) findViewById(R.id.tv_date);
         final Calendar c = Calendar.getInstance();
         int yy = c.get(Calendar.YEAR);
@@ -74,6 +84,13 @@ public class AddExpenseActivity extends AppCompatActivity {
         int dd = c.get(Calendar.DAY_OF_MONTH);
         date.setText(new StringBuilder().append(dd).append(" ").append("-").append(mm + 1).append("-")
                 .append(yy));
+    }
+
+    @Background
+    public void RestService(){
+        RestService restService = new RestService();
+        UserRegistrationModel userRegistrationModel = restService.register("user666", "test23");
+        Log.e(LOG_TAG, "status" + userRegistrationModel.getStatus() + ", id" + userRegistrationModel.getId());
     }
 
     @Click(R.id.fab_expense)
@@ -99,5 +116,7 @@ public class AddExpenseActivity extends AppCompatActivity {
                 .from(Categories.class)
                 .execute();
     }
+
+
 }
 

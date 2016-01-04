@@ -16,12 +16,15 @@ import android.widget.Toast;
 import com.activeandroid.query.Select;
 import com.loftschool.moneytracker.R;
 import com.loftschool.moneytracker.database.Categories;
+import com.loftschool.moneytracker.rest.RestService;
+import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
 import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
 import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
 import com.loftschool.moneytracker.ui.fragments.SettingsFragment_;
 import com.loftschool.moneytracker.ui.fragments.StatisticsFragment_;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.InstanceState;
 import org.androidannotations.annotations.OptionsItem;
@@ -150,5 +153,7 @@ public class MainActivity extends AppCompatActivity {
         Categories categoryFun = new Categories("Fun");
         categoryFun.save();
     }
+
+
 }
 
