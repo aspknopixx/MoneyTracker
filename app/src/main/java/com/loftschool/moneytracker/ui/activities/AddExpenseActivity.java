@@ -52,7 +52,7 @@ public class AddExpenseActivity extends AppCompatActivity {
 
     @AfterViews
     void ready() {
-        RestService();
+      //  RestService();
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             {
@@ -86,12 +86,12 @@ public class AddExpenseActivity extends AppCompatActivity {
                 .append(yy));
     }
 
-    @Background
-    public void RestService(){
-        RestService restService = new RestService();
-        UserRegistrationModel userRegistrationModel = restService.register("user666", "test23");
-        Log.e(LOG_TAG, "status" + userRegistrationModel.getStatus() + ", id" + userRegistrationModel.getId());
-    }
+//    @Background
+//    public void RestService(){
+//        RestService restService = new RestService();
+//        UserRegistrationModel userRegistrationModel = restService.register("user666", "test23");
+//        Log.e(LOG_TAG, "status" + userRegistrationModel.getStatus() + ", id" + userRegistrationModel.getId());
+//    }
 
     @Click(R.id.fab_expense)
     public void clickBtn(){
