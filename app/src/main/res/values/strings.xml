@@ -15,4 +15,10 @@
     <string name="item_text_stat">Здесь будет статистика</string>
     <string name="item_text_setting">Здесь будут настройки</string>
     <string name="add_button_expense">Добавить</string>
+    <string name="email_text_reg">Email</string>
+    <string name="pwd_text_reg">Password</string>
+    <string name="login_text_reg">Login</string>
+    <string name="account_text_reg">No account yet? Create one</string>
+    <string name="input_pwd_login">Поля должны содержать не менее 5 символов</string>
+    <string name="no_connection">"Нет подключения"</string>
 </resources>
