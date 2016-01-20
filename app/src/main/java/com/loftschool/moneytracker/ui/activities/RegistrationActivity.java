@@ -43,14 +43,14 @@ public class RegistrationActivity extends AppCompatActivity {
             String login = loginInput.getText().toString();
             String password = pwdInput.getText().toString();
             if (login.length()<5||password.length()<5){
-                Snackbar.make(scrollView, "Поля должны содержать не менее 5 символов", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(scrollView, R.string.input_pwd_login, Snackbar.LENGTH_SHORT).show();
             }
             else{
                 registerUser(login, password);
             }
         }
         else{
-            Snackbar.make(scrollView, "Нет подключения", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(scrollView, R.string.no_connection, Snackbar.LENGTH_SHORT).show();
         }
 
 
@@ -74,7 +74,6 @@ public class RegistrationActivity extends AppCompatActivity {
             Snackbar.make(scrollView, "Пользователь с таким логином уже существует", Snackbar.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this, MainActivity_.class);
-            intent.putExtra("key", "value");
             this.startActivity(intent);
         }
     }
