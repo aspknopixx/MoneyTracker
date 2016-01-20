@@ -39,7 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     @Click(R.id.btn_login)
     public void ButtonLoginClick(){
-        if (new NetworkStatus().isNetworkAvailable(this)){
+        if (NetworkStatus.isNetworkAvailable(this)){
             String login = loginInput.getText().toString();
             String password = pwdInput.getText().toString();
             if (login.length()<5||password.length()<5){
