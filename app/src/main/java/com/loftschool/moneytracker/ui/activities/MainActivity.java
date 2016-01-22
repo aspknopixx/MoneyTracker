@@ -1,24 +1,30 @@
-package com.loftschool.moneytracker;
+package com.loftschool.moneytracker.ui.activities;
 
-import android.support.v4.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
+
+import com.activeandroid.query.Select;
+import com.loftschool.moneytracker.R;
+import com.loftschool.moneytracker.database.Categories;
+import com.loftschool.moneytracker.rest.RestService;
+import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
+import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
+import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
+import com.loftschool.moneytracker.ui.fragments.SettingsFragment_;
+import com.loftschool.moneytracker.ui.fragments.StatisticsFragment_;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.InstanceState;
 import org.androidannotations.annotations.OptionsItem;
@@ -48,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
         setupDrawer();
+        if (new Select().from(Categories.class).execute().size() == 0){
+            createFakeCategories();
+        }
 
         if(savedInstanceState == null)
         {
@@ -79,15 +88,20 @@ public class MainActivity extends AppCompatActivity {
         Menu menuItems = navigationView.getMenu();
         Fragment findingFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
 
-        if(findingFragment != null && findingFragment instanceof ExpensesFragment_)
-        {
+        if (findingFragment != null && findingFragment instanceof ExpensesFragment_) {
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            menuItems.findItem(R.id.drawer_expenses).setCheckable(true);
-
+            navigationView.setCheckedItem(R.id.drawer_expenses);
+        } else if (findingFragment instanceof CategoryFragment_) {
+            navigationView.setCheckedItem(R.id.drawer_categories);
+        } else if (findingFragment instanceof StatisticsFragment_) {
+            navigationView.setCheckedItem(R.id.drawer_statistics);
+        } else if (findingFragment instanceof SettingsFragment_) {
+            navigationView.setCheckedItem(R.id.drawer_settings);
         }
-        if(drawerLayout.isEnabled())
-        {
-            drawerLayout.closeDrawer(navigationView);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -121,5 +135,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    // создем категории
+
+    private void createFakeCategories(){
+        Categories categoryClothes = new Categories("Clothes");
+        categoryClothes.save();
+        Categories categoryFood = new Categories("Food");
+        categoryFood.save();
+        Categories categoryHouse = new Categories("House");
+        categoryHouse.save();
+        Categories categoryCar = new Categories("Car");
+        categoryCar.save();
+        Categories categoryHobby = new Categories("Hobby");
+        categoryHobby.save();
+        Categories categoryFun = new Categories("Fun");
+        categoryFun.save();
+    }
+
+
 }
 

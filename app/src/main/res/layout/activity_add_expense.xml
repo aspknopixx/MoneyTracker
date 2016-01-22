@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     style="@style/Container.DarkBackground">
+
+
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
     <GridLayout
+        android:id="@+id/grid_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="2"
-        android:rowCount="4"
+        android:rowCount="7"
         android:background="@color/white"
         android:padding="@dimen/activity_vertical_margin"
         >
@@ -21,10 +30,13 @@
             android:layout_width="wrap_content"
             />
         <EditText
+            android:id="@+id/sum_text"
             android:gravity="fill"
             android:hint="1000"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="@integer/max_length_sum"
             />
 
         <TextView
@@ -34,10 +46,12 @@
             android:layout_width="wrap_content"
             />
         <EditText
+            android:id="@+id/fill_text"
             android:gravity="fill"
             android:hint="MacDonalds"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:maxLength="@integer/max_length_text"
             />
 
         <TextView
@@ -46,26 +60,44 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
-        <EditText
-            android:gravity="fill"
-            android:hint="Foot"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spinner"
             />
-
         <TextView
             android:gravity="fill"
             android:text="Дата"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
-        <EditText
+        <!--<EditText-->
+            <!--android:id="@+id/date_text"-->
+            <!--android:gravity="fill"-->
+            <!--android:inputType="date"-->
+            <!--android:hint="23/01/2015"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:maxLength="@integer/max_length_date"-->
+            <!--/>-->
+        <TextView
+            android:id="@+id/tv_date"
             android:gravity="fill"
-            android:hint="23/01/2015"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
 
     </GridLayout>
 
+
+
 </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_expense"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/float_btn"
+        app:layout_anchor="@id/grid_layout"
+        app:layout_anchorGravity="bottom|right|end"
+        android:src="@mipmap/ic_add_white_24dp"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

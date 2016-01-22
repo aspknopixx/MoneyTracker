@@ -1,4 +1,4 @@
-package com.loftschool.moneytracker;
+package com.loftschool.moneytracker.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,14 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.loftschool.moneytracker.R;
+import com.loftschool.moneytracker.database.Categories;
+import com.loftschool.moneytracker.database.Expenses;
+
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardViewHolder>{
 
-    List<Expense> expenses;
+    List<Categories> categories;
 
-    public CategoryAdapter(List<Expense> expenses){
-        this.expenses = expenses;
+    public CategoryAdapter(List<Categories> categories ){
+        this.categories = categories;
     }
 
     @Override
@@ -24,28 +28,27 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardVi
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
-        Expense expense = expenses.get(position);
-        holder.nameText.setText(expense.getTitle());
-        holder.sumText.setText(expense.getSum());
-        holder.dateName.setText(expense.getDate());
+        Categories category = categories.get(position);
+        holder.nameText.setText(category.name);
+//        holder.sumText.setText(category.price);
+//        holder.dateName.setText(category.date);
     }
 
     @Override
     public int getItemCount() {
-        return expenses.size();
+        return categories.size();
     }
 
 
     public class CardViewHolder extends RecyclerView.ViewHolder{
         protected TextView nameText;
-        protected  TextView sumText;
-        protected  TextView dateName;
+//        protected  TextView sumText;
+//        protected  TextView dateName;
 
         public CardViewHolder(View convertView){
             super(convertView);
             nameText = (TextView) convertView.findViewById(R.id.name_text);
-            sumText = (TextView) convertView.findViewById(R.id.sum_text);
-            dateName = (TextView) convertView.findViewById(R.id.date_text);
+//            1
         }
 
     }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/reg_activity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/ll_height"
+        android:paddingLeft="@dimen/padding_margin"
+        android:paddingRight="@dimen/padding_margin">
+
+        <ImageView android:src="@drawable/logo_moneytracker"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:layout_marginBottom="@dimen/padding_margin"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTOP_BUTTOM"
+            android:layout_marginBottom="@dimen/marginTOP_BUTTOM">
+            <EditText android:id="@+id/input_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email_text_reg" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTOP_BUTTOM"
+            android:layout_marginBottom="@dimen/marginTOP_BUTTOM">
+            <EditText android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/pwd_text_reg"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_margin"
+            android:layout_marginBottom="@dimen/padding_margin"
+            android:padding="12dp"
+            android:text="@string/login_text_reg"/>
+
+        <TextView android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_margin"
+            android:text="@string/account_text_reg"
+            android:gravity="center"
+            android:textSize="@dimen/float_btn"/>
+
+    </LinearLayout>
+</ScrollView>

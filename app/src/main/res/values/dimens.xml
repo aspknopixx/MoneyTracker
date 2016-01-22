@@ -11,4 +11,7 @@
     <dimen name="ll_height">56dp</dimen>
     <dimen name="text_size">14sp</dimen>
     <dimen name="float_btn">16dp</dimen>
+    <dimen name="padding_margin">24dp</dimen>
+    <dimen name="marginTOP_BUTTOM">8dp</dimen>
+    <dimen name="layout_height">72dp</dimen>
 </resources>
