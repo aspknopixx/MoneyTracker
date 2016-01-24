@@ -15,6 +15,7 @@ import com.loftschool.moneytracker.R;
 import com.loftschool.moneytracker.rest.RestService;
 import com.loftschool.moneytracker.rest.model.CreateCategory;
 import com.loftschool.moneytracker.rest.model.UserLoginModel;
+import com.loftschool.moneytracker.util.ConstantString;
 import com.loftschool.moneytracker.util.NetworkStatus;
 
 import org.androidannotations.annotations.AfterViews;
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity{
         UserLoginModel userLoginModel = restService.login(login, password);
         switch (userLoginModel.getStatus()){
 
-            case "success":
+            case ConstantString.success:
                 MonyeTrackerApplication.setAuthToken(userLoginModel.getAuthToken());
 //                MoneyTrackerApplication.setAuthToken(userLoginModel.getAuthToken());
                 Log.d(LOG_TAG, "Status: " + userLoginModel.getStatus() + ", token: " + MonyeTrackerApplication.getAuthKey());
@@ -84,15 +85,15 @@ public class LoginActivity extends AppCompatActivity{
                 this.startActivity(intent);
                 break;
 
-            case "Wrong password":
+            case ConstantString.wrongPassword:
                 Snackbar.make(scrollView, R.string.wrong_pwd, Snackbar.LENGTH_SHORT).show();
                 break;
 
-            case "Wrong login":
+            case ConstantString.wrongLogin:
                 Snackbar.make(scrollView, R.string.wrong_login, Snackbar.LENGTH_SHORT).show();
                 break;
 
-            case "Error":
+            case ConstantString.error:
                 Snackbar.make(scrollView, R.string.error_text,Snackbar.LENGTH_SHORT).show();
                 break;
         }
