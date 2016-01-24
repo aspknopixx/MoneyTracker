@@ -14,4 +14,5 @@
     <dimen name="padding_margin">24dp</dimen>
     <dimen name="marginTOP_BUTTOM">8dp</dimen>
     <dimen name="layout_height">72dp</dimen>
+    <dimen name="layout_heigth_splash">150dp</dimen>
 </resources>
