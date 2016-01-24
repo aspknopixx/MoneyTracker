@@ -4,21 +4,22 @@ package com.loftschool.moneytracker.database;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.loftschool.moneytracker.util.ConstantString;
 
 
-@Table(name = "Expenses")
+@Table(name = ConstantString.expenses)
 public class Expenses extends Model{
 
-    @Column(name = "price")
+    @Column(name = ConstantString.price)
     public String price;
 
-    @Column(name = "name")
+    @Column(name = ConstantString.name)
     public String name;
 
-    @Column(name = "date")
+    @Column(name = ConstantString.date)
     public String date;
 
-    @Column(name = "category")
+    @Column(name = ConstantString.category)
     public Categories category;
 
     public Expenses(){

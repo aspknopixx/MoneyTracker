@@ -9,8 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 
+import com.loftschool.moneytracker.MonyeTrackerApplication;
 import com.loftschool.moneytracker.R;
 import com.loftschool.moneytracker.rest.RestService;
+import com.loftschool.moneytracker.rest.model.UserLoginModel;
 import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
 import com.loftschool.moneytracker.util.NetworkStatus;
 
@@ -70,11 +72,13 @@ public class RegistrationActivity extends AppCompatActivity {
         RestService restService = new RestService();
         UserRegistrationModel userRegistrationModel = restService.register(log, pas);
         Log.i(TAG, "status: " + userRegistrationModel.getStatus() + " " + ", id: " + userRegistrationModel.getId());
-        if (!userRegistrationModel.getStatus().equalsIgnoreCase("success")) {
-            Snackbar.make(scrollView, "Пользователь с таким логином уже существует", Snackbar.LENGTH_SHORT).show();
+        if (userRegistrationModel.getStatus().equalsIgnoreCase("success")) {
+            UserLoginModel userLoginModel = restService.login(log, pas);
+            MonyeTrackerApplication.setAuthToken(userLoginModel.getAuthToken());
+            Log.d(TAG, "Status: " + userLoginModel.getStatus() + ", token: " + MonyeTrackerApplication.getAuthKey());
+            startActivity(new Intent(this, MainActivity_.class));
         } else {
-            Intent intent = new Intent(this, MainActivity_.class);
-            this.startActivity(intent);
+            Snackbar.make(scrollView, R.string.error_reg_user, Snackbar.LENGTH_SHORT).show();
         }
     }
 }
