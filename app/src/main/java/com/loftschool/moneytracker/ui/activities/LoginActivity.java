@@ -49,7 +49,12 @@ public class LoginActivity extends AppCompatActivity{
         if (NetworkStatus.isNetworkAvailable(this)){
             String login = loginInput.getText().toString();
             String password = pwd.getText().toString();
-            login(login,password);
+            if (login.length()<5||password.length()<5){
+                Snackbar.make(scrollView, R.string.input_pwd_login, Snackbar.LENGTH_SHORT).show();
+            }
+            else {
+                login(login, password);
+            }
         }
         else{
             Snackbar.make(scrollView, R.string.no_connection, Snackbar.LENGTH_SHORT).show();

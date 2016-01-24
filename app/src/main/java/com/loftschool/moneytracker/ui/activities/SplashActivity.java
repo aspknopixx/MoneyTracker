@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity{
         }
     }
 
-    @Background(delay = 1500)
+    @Background(delay = 1300)
     void startActivity(){
         token = MonyeTrackerApplication.getAuthKey();
         if (token.equals("")){
