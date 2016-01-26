@@ -21,6 +21,7 @@ import com.loftschool.moneytracker.database.Categories;
 import com.loftschool.moneytracker.rest.RestService;
 import com.loftschool.moneytracker.rest.model.CreateCategory;
 import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
+import com.loftschool.moneytracker.sync.TrackerSyncAdapter;
 import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
 import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
 import com.loftschool.moneytracker.ui.fragments.SettingsFragment_;
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new ExpensesFragment_()).commit();
         }
+
+        TrackerSyncAdapter.initializeSyncAdapter(this);
 
     }
 
