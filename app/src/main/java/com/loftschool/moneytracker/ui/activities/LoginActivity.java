@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity{
     @Click(R.id.link_reg_acLogin)
     void newRegLogin(){
         Intent intent = new Intent(this, RegistrationActivity_.class);
-        intent.putExtra("key", "value");
         this.startActivity(intent);
     }
 
@@ -76,24 +75,23 @@ public class LoginActivity extends AppCompatActivity{
         UserLoginModel userLoginModel = restService.login(login, password);
         switch (userLoginModel.getStatus()){
 
-            case ConstantString.success:
+            case ConstantString.SUCCESS:
                 MonyeTrackerApplication.setAuthToken(userLoginModel.getAuthToken());
 //                MoneyTrackerApplication.setAuthToken(userLoginModel.getAuthToken());
                 Log.d(LOG_TAG, "Status: " + userLoginModel.getStatus() + ", token: " + MonyeTrackerApplication.getAuthKey());
                 Intent intent = new Intent(this, MainActivity_.class);
-                intent.putExtra("key", "value");
                 this.startActivity(intent);
                 break;
 
-            case ConstantString.wrongPassword:
+            case ConstantString.WRONG_PASSWORD:
                 Snackbar.make(scrollView, R.string.wrong_pwd, Snackbar.LENGTH_SHORT).show();
                 break;
 
-            case ConstantString.wrongLogin:
+            case ConstantString.WRONG_LOGIN:
                 Snackbar.make(scrollView, R.string.wrong_login, Snackbar.LENGTH_SHORT).show();
                 break;
 
-            case ConstantString.error:
+            case ConstantString.ERROR:
                 Snackbar.make(scrollView, R.string.error_text,Snackbar.LENGTH_SHORT).show();
                 break;
         }

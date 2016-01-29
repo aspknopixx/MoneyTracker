@@ -8,23 +8,22 @@ import com.loftschool.moneytracker.util.ConstantString;
 
 import java.util.List;
 
-@Table(name = ConstantString.categories)
-public class Categories extends Model{
+@Table(name = ConstantString.CATEGORIES)
+public class Categories extends Model {
 
-    @Column(name = ConstantString.name)
+    @Column(name = ConstantString.NAME)
     public String name;
 
-    public Categories(){
+    public Categories() {
         super();
     }
 
-    public Categories(String name){
+    public Categories(String name) {
         super();
         this.name = name;
     }
 
-    public List<Expenses> expenses(){
-        return getMany(Expenses.class, ConstantString.category);
+    public List<Expenses> expenses() {
+        return getMany(Expenses.class, ConstantString.CATEGORY);
     }
-
 }

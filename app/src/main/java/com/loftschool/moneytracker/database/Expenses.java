@@ -7,19 +7,19 @@ import com.activeandroid.annotation.Table;
 import com.loftschool.moneytracker.util.ConstantString;
 
 
-@Table(name = ConstantString.expenses)
+@Table(name = ConstantString.EXPENSES)
 public class Expenses extends Model{
 
-    @Column(name = ConstantString.price)
+    @Column(name = ConstantString.PRICE)
     public String price;
 
-    @Column(name = ConstantString.name)
+    @Column(name = ConstantString.NAME)
     public String name;
 
-    @Column(name = ConstantString.date)
+    @Column(name = ConstantString.DATE)
     public String date;
 
-    @Column(name = ConstantString.category)
+    @Column(name = ConstantString.CATEGORY)
     public Categories category;
 
     public Expenses(){
