@@ -15,6 +15,7 @@ import android.util.Log;
 
 import com.loftschool.moneytracker.R;
 
+
 public class TrackerSyncAdapter extends AbstractThreadedSyncAdapter{
 
     private static final String LOG_TAG = TrackerSyncAdapter.class.getSimpleName();
@@ -26,8 +27,11 @@ public class TrackerSyncAdapter extends AbstractThreadedSyncAdapter{
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
 
-        Log.e(LOG_TAG,"Syncing method wass called!");
+        Log.e(LOG_TAG, "Syncing method wass called!");
 
+        DBtoServerSync dBtoServerSync = new DBtoServerSync();
+        dBtoServerSync.categorySyncServer();
+        dBtoServerSync.expensesSyncServer();
     }
     public static void syncImmediately(Context context) {
         Bundle bundle = new Bundle();
@@ -81,4 +85,6 @@ public class TrackerSyncAdapter extends AbstractThreadedSyncAdapter{
     public static void initializeSyncAdapter(Context context) {
         getSyncAccount(context);
     }
+
+
 }

@@ -147,17 +147,17 @@ public class MainActivity extends AppCompatActivity {
     // создем категории
 
     private void createFakeCategories(){
-        Categories categoryClothes = new Categories("Clothes");
+        Categories categoryClothes = new Categories("Clothes",0);
         categoryClothes.save();
-        Categories categoryFood = new Categories("Food");
+        Categories categoryFood = new Categories("Food",0);
         categoryFood.save();
-        Categories categoryHouse = new Categories("House");
+        Categories categoryHouse = new Categories("House",0);
         categoryHouse.save();
-        Categories categoryCar = new Categories("Car");
+        Categories categoryCar = new Categories("Car",0);
         categoryCar.save();
-        Categories categoryHobby = new Categories("Hobby");
+        Categories categoryHobby = new Categories("Hobby",0);
         categoryHobby.save();
-        Categories categoryFun = new Categories("Fun");
+        Categories categoryFun = new Categories("Fun",0);
         categoryFun.save();
     }
 

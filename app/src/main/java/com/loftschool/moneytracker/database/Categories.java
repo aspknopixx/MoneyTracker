@@ -14,16 +14,25 @@ public class Categories extends Model {
     @Column(name = ConstantString.NAME)
     public String name;
 
+    @Column(name = "idSync")
+    public int idSync;
+
     public Categories() {
         super();
     }
 
-    public Categories(String name) {
+    public Categories(String name, int idSync) {
         super();
         this.name = name;
+        this.idSync = idSync;
     }
 
     public List<Expenses> expenses() {
         return getMany(Expenses.class, ConstantString.CATEGORY);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

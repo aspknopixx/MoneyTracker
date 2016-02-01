@@ -2,6 +2,8 @@ package com.loftschool.moneytracker.rest;
 
 import com.loftschool.moneytracker.MonyeTrackerApplication;
 import com.loftschool.moneytracker.rest.model.CreateCategory;
+import com.loftschool.moneytracker.rest.model.SynchCategory;
+import com.loftschool.moneytracker.rest.model.SynchExpense;
 import com.loftschool.moneytracker.rest.model.UserLoginModel;
 import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
 
@@ -25,5 +27,12 @@ public class RestService {
 
     public CreateCategory createCategory(String title){
         return restClient.getCreateCategoryApi().createCategory(title, MonyeTrackerApplication.getAuthKey());
+    }
+
+    public SynchCategory categorySynch(String data){
+        return restClient.getSynchCategoryApi().categorySynch(data, MonyeTrackerApplication.getAuthKey());
+    }
+    public SynchExpense expenseSynch(String data){
+        return restClient.getSynchExpenseApi().expenseSynch(data, MonyeTrackerApplication.getAuthKey());
     }
 }
