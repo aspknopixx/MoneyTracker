@@ -17,8 +17,17 @@
     <string name="add_button_expense">Добавить</string>
     <string name="email_text_reg">Email</string>
     <string name="pwd_text_reg">Password</string>
-    <string name="login_text_reg">Login</string>
+    <string name="login_text_reg">Registration</string>
+    <string name="login_text_in">Login</string>
     <string name="account_text_reg">No account yet? Create one</string>
     <string name="input_pwd_login">Поля должны содержать не менее 5 символов</string>
     <string name="no_connection">"Нет подключения"</string>
+    <string name="in_app">Вход</string>
+    <string name="wrong_login">Неправильный логин</string>
+    <string name="wrong_pwd">Неправильный пароль</string>
+    <string name="error_text">Произошла непредвиденная ошибка</string>
+    <string name="error_reg_user">Пользователь с таким логином уже существует</string>
+
+    <string name="content_authority">com.loftschool.moneytracker</string>
+    <string name="sync_account_type">moneytracker.loftschool.com</string>
 </resources>

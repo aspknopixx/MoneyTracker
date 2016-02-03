@@ -1,5 +1,6 @@
 package com.loftschool.moneytracker.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -17,7 +19,9 @@ import com.activeandroid.query.Select;
 import com.loftschool.moneytracker.R;
 import com.loftschool.moneytracker.database.Categories;
 import com.loftschool.moneytracker.rest.RestService;
+import com.loftschool.moneytracker.rest.model.CreateCategory;
 import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
+import com.loftschool.moneytracker.sync.TrackerSyncAdapter;
 import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
 import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
 import com.loftschool.moneytracker.ui.fragments.SettingsFragment_;
@@ -30,12 +34,15 @@ import org.androidannotations.annotations.InstanceState;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.List;
+
 
 @EActivity(R.layout.activity_main)
 
 public class MainActivity extends AppCompatActivity {
 
     private Fragment fragment;
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @ViewById
     Toolbar toolbar;
@@ -54,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
         setupDrawer();
+        insertCategory(getDataList());
         if (new Select().from(Categories.class).execute().size() == 0){
             createFakeCategories();
         }
@@ -62,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new ExpensesFragment_()).commit();
         }
+
+        TrackerSyncAdapter.initializeSyncAdapter(this);
 
     }
 
@@ -107,13 +117,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDrawer()
     {
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
-        {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem item)
-            {
-                switch (item.getItemId())
-                {
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
                     case R.id.drawer_expenses:
                         fragment = new ExpensesFragment_();
                         break;
@@ -140,19 +147,49 @@ public class MainActivity extends AppCompatActivity {
     // создем категории
 
     private void createFakeCategories(){
-        Categories categoryClothes = new Categories("Clothes");
+        Categories categoryClothes = new Categories("Clothes",0);
         categoryClothes.save();
-        Categories categoryFood = new Categories("Food");
+        Categories categoryFood = new Categories("Food",0);
         categoryFood.save();
-        Categories categoryHouse = new Categories("House");
+        Categories categoryHouse = new Categories("House",0);
         categoryHouse.save();
-        Categories categoryCar = new Categories("Car");
+        Categories categoryCar = new Categories("Car",0);
         categoryCar.save();
-        Categories categoryHobby = new Categories("Hobby");
+        Categories categoryHobby = new Categories("Hobby",0);
         categoryHobby.save();
-        Categories categoryFun = new Categories("Fun");
+        Categories categoryFun = new Categories("Fun",0);
         categoryFun.save();
     }
+
+    private List<Categories> getDataList()
+    {
+        return new Select()
+                .from(Categories.class)
+                .execute();
+    }
+
+    @Background
+    void insertCategory(List<Categories> list){
+        RestService restService = new RestService();
+        for (Categories cat: list){
+            CreateCategory createCategory = restService.createCategory(cat.name);
+            switch (createCategory.getStatus()){
+
+                case "success":
+                    Log.d(LOG_TAG, "Status: " + createCategory.getStatus() +
+                            ", Title: " + createCategory.getData().getTitle() +
+                            ", Id: " + createCategory.getData().getId());
+                    break;
+
+                case "unauthorized":
+                    startActivity(new Intent(this, LoginActivity_.class));
+                    break;
+            }
+
+        }
+
+    }
+
 
 
 }
