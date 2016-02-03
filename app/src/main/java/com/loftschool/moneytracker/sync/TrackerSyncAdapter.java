@@ -29,9 +29,9 @@ public class TrackerSyncAdapter extends AbstractThreadedSyncAdapter{
 
         Log.e(LOG_TAG, "Syncing method wass called!");
 
-        DBtoServerSync dBtoServerSync = new DBtoServerSync();
-        dBtoServerSync.categorySyncServer();
-        dBtoServerSync.expensesSyncServer();
+//        DBtoServerSync dBtoServerSync = new DBtoServerSync();
+//        dBtoServerSync.categorySyncServer();
+//        dBtoServerSync.expensesSyncServer();
     }
     public static void syncImmediately(Context context) {
         Bundle bundle = new Bundle();

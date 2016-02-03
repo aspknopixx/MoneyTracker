@@ -1,5 +1,7 @@
 package com.loftschool.moneytracker.rest;
 
+import android.content.Context;
+
 import com.loftschool.moneytracker.MonyeTrackerApplication;
 import com.loftschool.moneytracker.rest.model.CreateCategory;
 import com.loftschool.moneytracker.rest.model.SynchCategory;

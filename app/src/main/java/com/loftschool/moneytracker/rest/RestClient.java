@@ -1,6 +1,7 @@
 package com.loftschool.moneytracker.rest;
 
 
+import com.loftschool.moneytracker.rest.api.CheckGoogleTokenApi;
 import com.loftschool.moneytracker.rest.api.CreateCategoryApi;
 import com.loftschool.moneytracker.rest.api.LoginUserApi;
 import com.loftschool.moneytracker.rest.api.RegisterUserApi;
@@ -19,6 +20,7 @@ public class RestClient {
     private CreateCategoryApi createCategoryApi;
     private SynchCategoryApi synchCategoryApi;
     private SynchExpenseApi synchExpenseApi;
+    private CheckGoogleTokenApi checkGoogleTokenApi;
 
     public RestClient(){
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -31,6 +33,7 @@ public class RestClient {
         createCategoryApi = restAdapter.create(CreateCategoryApi.class);
         synchCategoryApi = restAdapter.create(SynchCategoryApi.class);
         synchExpenseApi = restAdapter.create(SynchExpenseApi.class);
+        checkGoogleTokenApi = restAdapter.create(CheckGoogleTokenApi.class);
 
     }
     public RegisterUserApi getRegisterUserApi(){
@@ -49,5 +52,8 @@ public class RestClient {
     }
     public SynchExpenseApi getSynchExpenseApi(){
         return synchExpenseApi;
+    }
+    public CheckGoogleTokenApi getCheckGoogleTokenApi(){
+        return checkGoogleTokenApi;
     }
 }
