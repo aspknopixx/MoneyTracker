@@ -28,7 +28,7 @@ public class DBtoServerSync {
         SynchCategory synchCategory = restService.categorySynch(addCategorySyncServer());
         List<Data> dataListCategory = synchCategory.getData();
         if (synchCategory.getStatus().equalsIgnoreCase(ConstantString.SUCCESS)){
-            Log.d(LOG_TAG, "Status: " + synchCategory.getStatus());
+            Log.e(LOG_TAG, "Status: " + synchCategory.getStatus());
             List<Categories> categoriesNew = getDataList();
             for (Data data : dataListCategory){
                 for (Categories categoriesList : categoriesNew){
@@ -42,7 +42,7 @@ public class DBtoServerSync {
 
         //Проверяем возвращаемый статус
         if (synchCategory.getStatus().equalsIgnoreCase(ConstantString.SUCCESS)){
-           Log.d(LOG_TAG, "Status: " + synchCategory.getStatus());
+           Log.e(LOG_TAG, "Status: " + synchCategory.getStatus());
         } else if (synchCategory.getStatus().equalsIgnoreCase(ConstantString.ERROR)){
             System.out.println(R.string.error_text);
         }
@@ -77,7 +77,7 @@ public class DBtoServerSync {
         RestService restService = new RestService();
         SynchExpense synchExpense = restService.expenseSynch(addExpensesSyncServer());
         if (synchExpense.getStatus().equalsIgnoreCase(ConstantString.SUCCESS)){
-            Log.d(LOG_TAG, "Status: " + synchExpense.getStatus());
+            Log.e(LOG_TAG, "Status: " + synchExpense.getStatus());
         } else if (synchExpense.getStatus().equalsIgnoreCase(ConstantString.ERROR)){
             System.out.println(R.string.error_text);
         }
@@ -97,9 +97,9 @@ public class DBtoServerSync {
 
         for (Expenses expensesItem : expensesList){
             double priceValue = Double.parseDouble(expensesItem.price);
-            int categoryId = Integer.parseInt(expensesItem.category.getId().toString());
+           // int categoryId = Integer.parseInt(expensesItem.category.getId().toString());
             nExpense.setId(0);
-            nExpense.setCategoryId(categoryId);
+            nExpense.setCategoryId(expensesItem.category.idSync);
             nExpense.setComment(expensesItem.name);
             nExpense.setSum(priceValue);
             nExpense.setTrDate(gson.toJson(syncExpense));
