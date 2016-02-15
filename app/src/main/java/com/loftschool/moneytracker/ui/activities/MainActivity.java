@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.UiThread;
+import org.androidannotations.annotations.UiThread;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new ExpensesFragment_()).commit();
         }
 
+        gDataUserForDrower();
         TrackerSyncAdapter.initializeSyncAdapter(this);
 
     }
@@ -92,21 +93,21 @@ public class MainActivity extends AppCompatActivity {
         GooglePlusModel googlePlusModel = restClientGoogle.getCheckGoogleJsonApi().gJson(gToken);
         String nameUser = googlePlusModel.getName();
         String emailUser = googlePlusModel.getEmail();
-        String iconUser = googlePlusModel.getPicture();
+        String pictureUser = googlePlusModel.getPicture();
 
         try{
-            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(iconUser).getContent());
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(pictureUser).getContent());
             setIconToDrawer(bitmap);
         }catch (MalformedURLException e){
             e.printStackTrace();
         }catch (IOException e){
             e.printStackTrace();
         }
-        setInfoUser(nameUser, emailUser);
+        setInforUser(nameUser, emailUser);
     }
 
     @UiThread
-    void setInfoUser(String nameUser, String emailUser){
+    void setInforUser(String nameUser, String emailUser){
         TextView googleNameUserDrawer = (TextView) findViewById(R.id.name);
         TextView googleEmailUserDrawer = (TextView) findViewById(R.id.email);
         googleNameUserDrawer.setText(nameUser);
