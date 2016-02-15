@@ -11,17 +11,26 @@
     android:paddingLeft="@dimen/drawer_padding_right_left"
     android:paddingRight="@dimen/drawer_padding_right_left">
 
-    <ImageView
-        android:layout_width="@dimen/img_height_width"
-        android:layout_height="@dimen/img_height_width"
-        android:src="@drawable/icon"/>
+    <!--<ImageView-->
+        <!--android:layout_width="@dimen/img_height_width"-->
+        <!--android:layout_height="@dimen/img_height_width"-->
+        <!--android:src="@drawable/icon"/>-->
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:id="@+id/google_icon"
+        android:src="@drawable/icon"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/ll_height"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:id="@+id/linearLayout">
 
          <TextView
             android:id="@+id/name"

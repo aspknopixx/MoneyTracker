@@ -82,8 +82,8 @@ public class LoginActivity extends AppCompatActivity{
         }catch (UserRecoverableAuthException userAuthEx){
             startActivityForResult(userAuthEx.getIntent(), 10);
         }
-        catch (IOException inEx) {
-            inEx.printStackTrace();
+        catch (IOException ioEx) {
+            ioEx.printStackTrace();
         } catch (GoogleAuthException fatalAuthEx) {
             Log.e(LOG_TAG, "Fatal Exception: " + fatalAuthEx.getLocalizedMessage());
         }
