@@ -28,6 +28,8 @@
     <string name="error_text">Произошла непредвиденная ошибка</string>
     <string name="error_reg_user">Пользователь с таким логином уже существует</string>
 
+    <string name="search_title">Поиск</string>
+
     <string name="content_authority">com.loftschool.moneytracker</string>
     <string name="sync_account_type">moneytracker.loftschool.com</string>
 </resources>

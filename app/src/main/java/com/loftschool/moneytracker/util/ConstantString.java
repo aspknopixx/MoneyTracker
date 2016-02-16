@@ -13,4 +13,5 @@ public final class ConstantString {
     public final static String WRONG_PASSWORD = "Wrong password";
     public final static String WRONG_LOGIN = "Wrong login";
     public final static String ERROR = "Error";
+    public final static String BASE_URL = "http://lmt.loftblog.tmweb.ru";
 }

@@ -1,7 +1,10 @@
 package com.loftschool.moneytracker.ui.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import org.androidannotations.annotations.UiThread;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,14 +16,17 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.activeandroid.query.Select;
+import com.github.siyamed.shapeimageview.CircularImageView;
+import com.loftschool.moneytracker.MonyeTrackerApplication;
 import com.loftschool.moneytracker.R;
 import com.loftschool.moneytracker.database.Categories;
+import com.loftschool.moneytracker.rest.RestClient;
 import com.loftschool.moneytracker.rest.RestService;
 import com.loftschool.moneytracker.rest.model.CreateCategory;
-import com.loftschool.moneytracker.rest.model.UserRegistrationModel;
+import com.loftschool.moneytracker.rest.model.GooglePlusModel;
 import com.loftschool.moneytracker.sync.TrackerSyncAdapter;
 import com.loftschool.moneytracker.ui.fragments.CategoryFragment_;
 import com.loftschool.moneytracker.ui.fragments.ExpensesFragment_;
@@ -34,6 +40,10 @@ import org.androidannotations.annotations.InstanceState;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 
@@ -71,8 +81,43 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new ExpensesFragment_()).commit();
         }
 
+        gDataUserForDrower();
         TrackerSyncAdapter.initializeSyncAdapter(this);
 
+    }
+
+    @Background
+    void gDataUserForDrower(){
+        String gToken = MonyeTrackerApplication.getGoogleToken(this);
+        RestClient restClientGoogle = new RestClient();
+        GooglePlusModel googlePlusModel = restClientGoogle.getCheckGoogleJsonApi().gJson(gToken);
+        String nameUser = googlePlusModel.getName();
+        String emailUser = googlePlusModel.getEmail();
+        String pictureUser = googlePlusModel.getPicture();
+
+        try{
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(pictureUser).getContent());
+            setIconToDrawer(bitmap);
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        setInforUser(nameUser, emailUser);
+    }
+
+    @UiThread
+    void setInforUser(String nameUser, String emailUser){
+        TextView googleNameUserDrawer = (TextView) findViewById(R.id.name);
+        TextView googleEmailUserDrawer = (TextView) findViewById(R.id.email);
+        googleNameUserDrawer.setText(nameUser);
+        googleEmailUserDrawer.setText(emailUser);
+    }
+
+    @UiThread
+    void setIconToDrawer(Bitmap bitmap){
+        CircularImageView googlepIconDrawer = (CircularImageView) findViewById(R.id.google_icon);
+        googlepIconDrawer.setImageBitmap(bitmap);
     }
 
     private void setupToolbar()
